@@ -28,12 +28,12 @@ public class BikeTeam {
         this.name = name;
     }
 
-    public void addCandidate(BikeRider bikeRider){
+    public void addBikeRider(BikeRider bikeRider){
         this.ridersOfATeam.add(bikeRider);
         bikeRider.setBikeTeam(this);
     }
 
-    public void addCandidates(Set<BikeRider> bikeRiders){
+    public void addBikeRiders(Set<BikeRider> bikeRiders){
         this.ridersOfATeam.addAll(bikeRiders);
         for (BikeRider candidate : ridersOfATeam) {
             candidate.setBikeTeam(this);
