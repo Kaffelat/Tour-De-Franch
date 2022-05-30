@@ -27,14 +27,14 @@ public class MakeTestData implements ApplicationRunner {
         BikeTeam bikeTeam2 = new BikeTeam("Israel");
         BikeTeam bikeTeam3 = new BikeTeam("Jumbo-Visma");
 
-        BikeRider bikeRider1 = new BikeRider("Bobby Olsen");
-        BikeRider bikeRider2 = new BikeRider("Pim de Keysergracht");
-        BikeRider bikeRider3 = new BikeRider("Gitte Sebster");
-        BikeRider bikeRider4 = new BikeRider("Goldstein Omer");
-        BikeRider bikeRider5 = new BikeRider("Woods Michael");
-        BikeRider bikeRider6 = new BikeRider("Fuglsang Jakob");
-        BikeRider bikeRider7 = new BikeRider("Vingegaard Jonas");
-        BikeRider bikeRider8 = new BikeRider("Kuss Sepp");
+        BikeRider bikeRider1 = new BikeRider("Bobby Olsen", 22, 3, 1, 300);
+        BikeRider bikeRider2 = new BikeRider("Pim de Keysergracht", 30, 6, 10, 600);
+        BikeRider bikeRider3 = new BikeRider("Gitte Sebster", 27, 5,2,700);
+        BikeRider bikeRider4 = new BikeRider("Goldstein Omer", 19, 8,2,100);
+        BikeRider bikeRider5 = new BikeRider("Woods Michael",45, 9,2,200);
+        BikeRider bikeRider6 = new BikeRider("Fuglsang Jakob", 65, 10,2,1000);
+        BikeRider bikeRider7 = new BikeRider("Vingegaard Jonas", 32, 4,2,3000);
+        BikeRider bikeRider8 = new BikeRider("Kuss Sepp",18, 1,2,3500);
 
         bikeTeam1.addBikeRiders(Set.of(bikeRider1,bikeRider2));
         bikeTeam2.addBikeRider((bikeRider3));

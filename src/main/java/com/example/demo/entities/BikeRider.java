@@ -1,10 +1,12 @@
 package com.example.demo.entities;
 
+import com.example.demo.dto.BikeRiderRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,11 +17,41 @@ public class BikeRider {
     private int id;
 
     private String name;
+    private int age;
+    private int mountainPoints;
+    private int sprintPoints;
+    private int timeInMinutes;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private BikeTeam bikeTeam;
 
-    public BikeRider(String name){
+
+    public BikeRider(String name, int age, int mountainPoints, int sprintPoints, int timeInMinutes){
         this.name = name;
+        this.age = age;
+        this.mountainPoints = mountainPoints;
+        this.sprintPoints = sprintPoints;
+        this.timeInMinutes = timeInMinutes;
+    }
+
+    public BikeRider(BikeRiderRequest body) {
+        this.name = body.getName();
+        this.age = body.getAge();
+        this.mountainPoints = body.getMountainPoints();
+        this.sprintPoints = body.getSprintPoints();
+        this.timeInMinutes = body.getTimeInMinutes();
+    }
+
+    @Override
+    public String toString() {
+        return "BikeRider{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", mountainPoints=" + mountainPoints +
+                ", sprintPoints=" + sprintPoints +
+                ", timeInMinutes=" + timeInMinutes +
+                ", bikeTeam=" + bikeTeam +
+                '}';
     }
 }

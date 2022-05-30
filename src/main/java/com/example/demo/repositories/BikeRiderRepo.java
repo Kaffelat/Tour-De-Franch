@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface BikeRiderRepo extends JpaRepository<BikeRider,Integer> {
     List<BikeRider> findBikeRiderByBikeTeam_Name(String name);
+    BikeRider findById(int id);
 }

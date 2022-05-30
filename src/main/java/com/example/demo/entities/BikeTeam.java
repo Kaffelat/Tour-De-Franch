@@ -21,7 +21,7 @@ public class BikeTeam {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "bikeTeam", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
+    @OneToMany(mappedBy = "bikeTeam", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST ,CascadeType.MERGE, CascadeType.ALL})
     private Set<BikeRider> ridersOfATeam = new HashSet<>();
 
     public BikeTeam(String name){
@@ -35,8 +35,8 @@ public class BikeTeam {
 
     public void addBikeRiders(Set<BikeRider> bikeRiders){
         this.ridersOfATeam.addAll(bikeRiders);
-        for (BikeRider candidate : ridersOfATeam) {
-            candidate.setBikeTeam(this);
+        for (BikeRider bikeRider : ridersOfATeam) {
+            bikeRider.setBikeTeam(this);
         }
     }
 }
