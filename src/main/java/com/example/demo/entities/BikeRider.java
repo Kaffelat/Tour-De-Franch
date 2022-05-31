@@ -22,8 +22,9 @@ public class BikeRider {
     private int sprintPoints;
     private int timeInMinutes;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private BikeTeam bikeTeam;
+
 
 
     public BikeRider(String name, int age, int mountainPoints, int sprintPoints, int timeInMinutes){

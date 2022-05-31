@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class BikeTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +22,7 @@ public class BikeTeam {
 
     private String name;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "bikeTeam", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST ,CascadeType.MERGE, CascadeType.ALL})
+    @OneToMany(mappedBy = "bikeTeam", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
     private Set<BikeRider> ridersOfATeam = new HashSet<>();
 
     public BikeTeam(String name){

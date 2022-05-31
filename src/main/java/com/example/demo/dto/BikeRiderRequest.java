@@ -17,6 +17,7 @@ public class BikeRiderRequest {
     private int mountainPoints;
     private int sprintPoints;
     private int timeInMinutes;
+    private int bikeTeamId;
 
 
 }

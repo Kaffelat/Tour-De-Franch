@@ -33,16 +33,9 @@ public class BikeRiderService {
         return bikeRiders.stream().map(BikeRiderResponse::new).collect(Collectors.toList());
     }
 
-    public List<BikeRiderResponse> getAllBikeRiders(Pageable pageable) {
-        Page<BikeRider> bikeRiders = bikeRiderRepo.findAll(pageable);
-        return bikeRiders.stream().map(BikeRiderResponse::new).collect(Collectors.toList());
-    }
-
-    public BikeRiderResponse addBikeRider(BikeRiderRequest body){
-        BikeRider newBikeRider = bikeRiderRepo.save(new BikeRider(body));
-        bikeRiderRepo.save(new BikeRider("gitte", 22, 2, 2, 100));
-        System.out.println(newBikeRider);
-        return new BikeRiderResponse(newBikeRider);
+    public BikeRiderResponse addBikeRider(BikeRider body){
+      bikeRiderRepo.save(body);
+      return new BikeRiderResponse(body);
     }
 
     public void deleteBikeRider(int id){
@@ -57,6 +50,7 @@ public class BikeRiderService {
         editedBikeRider.setMountainPoints(body.getMountainPoints());
         editedBikeRider.setSprintPoints(body.getSprintPoints());
         editedBikeRider.setTimeInMinutes(body.getTimeInMinutes());
+        editedBikeRider.setBikeTeam(bikeTeamRepo.findById(body.getBikeTeamId()));
         return new BikeRiderResponse(bikeRiderRepo.save(editedBikeRider));
 
     }

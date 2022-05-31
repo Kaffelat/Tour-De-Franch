@@ -10,13 +10,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BikeRiderResponse {
-     int id;
-     String name;
-     int age;
-     int timeInMinutes;
-     int mountainPoints;
-     int sprintPoints;
-     String bikeTeamName;
+    private int id;
+    private String name;
+    private int age;
+    private int timeInMinutes;
+    private int mountainPoints;
+    private int sprintPoints;
+    private String bikeTeamName;
 
 
     public BikeRiderResponse (BikeRider body){

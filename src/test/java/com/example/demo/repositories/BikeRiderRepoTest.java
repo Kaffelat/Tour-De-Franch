@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class BikeRiderRepoTest {
-   @Mock
+   @Autowired
    BikeRiderRepo bikeRiderRepo;
 
-   @Mock
+   @Autowired
    BikeTeamRepo bikeTeamRepo;
 
 
@@ -60,10 +60,4 @@ class BikeRiderRepoTest {
         assertEquals(2,bikeRiders.size());
     }
 
-    @Test
-    void deleteBikeRiders(){
-        bikeRiderRepo.deleteById(1);
-        System.out.println(bikeRiderRepo.count());
-        assertEquals(1,bikeRiderRepo.count());
-    }
 }
