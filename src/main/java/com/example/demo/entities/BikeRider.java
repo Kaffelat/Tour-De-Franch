@@ -33,6 +33,7 @@ public class BikeRider {
         this.mountainPoints = mountainPoints;
         this.sprintPoints = sprintPoints;
         this.timeInMinutes = timeInMinutes;
+
     }
 
     public BikeRider(BikeRiderRequest body) {
@@ -41,18 +42,7 @@ public class BikeRider {
         this.mountainPoints = body.getMountainPoints();
         this.sprintPoints = body.getSprintPoints();
         this.timeInMinutes = body.getTimeInMinutes();
+        this.bikeTeam = body.getBikeTeam();
     }
 
-    @Override
-    public String toString() {
-        return "BikeRider{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", mountainPoints=" + mountainPoints +
-                ", sprintPoints=" + sprintPoints +
-                ", timeInMinutes=" + timeInMinutes +
-                ", bikeTeam=" + bikeTeam +
-                '}';
-    }
 }

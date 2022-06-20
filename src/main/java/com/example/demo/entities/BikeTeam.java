@@ -20,13 +20,13 @@ public class BikeTeam {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private String bikeTeamName;
 
     @OneToMany(mappedBy = "bikeTeam", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST ,CascadeType.MERGE})
     private Set<BikeRider> ridersOfATeam = new HashSet<>();
 
-    public BikeTeam(String name){
-        this.name = name;
+    public BikeTeam(String bikeTeamName){
+        this.bikeTeamName = bikeTeamName;
     }
 
     public void addBikeRider(BikeRider bikeRider){
@@ -39,5 +39,9 @@ public class BikeTeam {
         for (BikeRider bikeRider : ridersOfATeam) {
             bikeRider.setBikeTeam(this);
         }
+    }
+    public void deleteBikeRider(BikeRider bikeRider){
+        this.ridersOfATeam.remove(bikeRider);
+
     }
 }

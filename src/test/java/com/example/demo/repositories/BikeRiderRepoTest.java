@@ -24,9 +24,6 @@ class BikeRiderRepoTest {
    BikeTeamRepo bikeTeamRepo;
 
 
-   BikeRiderService bikeRiderService;
-
-
     @BeforeEach
     void setUp(){
         bikeRiderRepo.deleteAll();

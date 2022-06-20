@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface BikeRiderRepo extends JpaRepository<BikeRider,Integer> {
-    List<BikeRider> findBikeRiderByBikeTeam_Name(String name);
+    List<BikeRider> findBikeRiderByBikeTeam_bikeTeamName(String bikeTeamName);
     BikeRider findById(int id);
 }

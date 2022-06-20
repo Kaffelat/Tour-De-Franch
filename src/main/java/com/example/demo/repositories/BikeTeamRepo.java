@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BikeTeamRepo extends JpaRepository<BikeTeam, Integer> {
     BikeTeam findById(int id);
+    BikeTeam findByBikeTeamName(String bikeTeamName);
 }

@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.dto.BikeRiderRequest;
 import com.example.demo.dto.BikeRiderResponse;
 import com.example.demo.entities.BikeRider;
+import com.example.demo.entities.BikeTeam;
 import com.example.demo.error.Client4xxException;
 import com.example.demo.repositories.BikeRiderRepo;
 import com.example.demo.repositories.BikeTeamRepo;
@@ -23,23 +24,28 @@ public class BikeRiderService {
         this.bikeTeamRepo = bikeTeamRepo;
     }
 
-    public List<BikeRiderResponse> getAllBikeRiders(String name){
+    public List<BikeRiderResponse> getAllBikeRiders(String bikeTeamName){
         List<BikeRider> bikeRiders;
-        if (name != null) {
-            bikeRiders = bikeRiderRepo.findBikeRiderByBikeTeam_Name(name);
+        if (bikeTeamName != null) {
+            bikeRiders = bikeRiderRepo.findBikeRiderByBikeTeam_bikeTeamName(bikeTeamName);
         } else {
             bikeRiders = bikeRiderRepo.findAll();
         }
         return bikeRiders.stream().map(BikeRiderResponse::new).collect(Collectors.toList());
     }
 
-    public BikeRiderResponse addBikeRider(BikeRider body){
-      bikeRiderRepo.save(body);
-      return new BikeRiderResponse(body);
+    public BikeRiderResponse addBikeRider(BikeRiderRequest body){
+      BikeTeam bikerTeam = bikeTeamRepo.findByBikeTeamName(body.getBikeTeamName());
+        System.out.println(body.getBikeTeamName());
+      BikeRiderRequest bikeRiderRequest = new BikeRiderRequest(body.getName(),body.getAge(), body.getMountainPoints(), body.getSprintPoints(), body.getTimeInMinutes(), bikerTeam);
+      BikeRider bikeRider = new BikeRider(bikeRiderRequest);
+      bikeRiderRepo.save(bikeRider);
+      return new BikeRiderResponse(bikeRider);
     }
 
     public void deleteBikeRider(int id){
         BikeRider br = bikeRiderRepo.findById(id);
+        br.getBikeTeam().deleteBikeRider(br);
         bikeRiderRepo.delete(br);
     }
 
@@ -50,7 +56,7 @@ public class BikeRiderService {
         editedBikeRider.setMountainPoints(body.getMountainPoints());
         editedBikeRider.setSprintPoints(body.getSprintPoints());
         editedBikeRider.setTimeInMinutes(body.getTimeInMinutes());
-        editedBikeRider.setBikeTeam(bikeTeamRepo.findById(body.getBikeTeamId()));
+        editedBikeRider.setBikeTeam(bikeTeamRepo.findByBikeTeamName(body.getBikeTeamName()));
         return new BikeRiderResponse(bikeRiderRepo.save(editedBikeRider));
 
     }

@@ -23,8 +23,8 @@ public class BikeRiderController {
     }
 
     @GetMapping
-    public List<BikeRiderResponse> getAllBikeRiders(@RequestParam(value="bikeTeam", required = false) String name){
-        return bikeRiderService.getAllBikeRiders(name);
+    public List<BikeRiderResponse> getAllBikeRiders(@RequestParam(value="bikeTeam", required = false) String bikeTeamName){
+        return bikeRiderService.getAllBikeRiders(bikeTeamName);
     }
     @GetMapping("/{bikeTeamName}")
     public List<BikeRiderResponse> getBikeRidersByTeamName(@PathVariable String bikeTeamName){
@@ -33,10 +33,7 @@ public class BikeRiderController {
 
     @PostMapping
     public BikeRiderResponse addBikeRider(@RequestBody BikeRiderRequest body){
-        BikeRider bikeRider = new BikeRider(body);
-        bikeTeamService.findBikerById(body.getBikeTeamId()).addBikeRider(bikeRider);
-        bikeRiderService.addBikeRider(bikeRider);
-        return new BikeRiderResponse(bikeRider);
+        return bikeRiderService.addBikeRider(body);
     }
 
     @PutMapping("/{id}")
