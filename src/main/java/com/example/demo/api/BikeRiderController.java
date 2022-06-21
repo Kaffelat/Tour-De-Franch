@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/bikeRiders")
+@RequestMapping("bikeRiders")
 public class BikeRiderController {
     BikeRiderService bikeRiderService;
     BikeTeamService bikeTeamService;
