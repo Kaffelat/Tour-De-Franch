@@ -21,6 +21,7 @@ jobs:
         with:
           java-version: '11'
 
+
       - name: Build with Maven
         run: mvn clean install
 
@@ -29,6 +30,7 @@ jobs:
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
+          retention-days: 1
 
   deploy:
     runs-on: ubuntu-latest
